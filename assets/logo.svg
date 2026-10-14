@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" fill="none">
+  <defs>
+    <linearGradient id="aquaGrad" x1="10" y1="6" x2="38" y2="45" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#0284c7"/>
+    </linearGradient>
+  </defs>
+  <path d="M24 6C24 6 10 22 10 31C10 38.732 16.268 45 24 45C31.732 45 38 38.732 38 31C38 22 24 6 24 6Z" fill="url(#aquaGrad)"/>
+  <path d="M24 16C24 16 16 26 16 32C16 36.4183 19.5817 40 24 40C28.4183 40 32 36.4183 32 32C32 26 24 16 24 16Z" fill="#0891b2" opacity="0.6"/>
+  <circle cx="21" cy="27" r="3" fill="#ffffff" opacity="0.7"/>
+  <text x="48" y="32" font-family="'Space Grotesk', system-ui, sans-serif" font-size="24" font-weight="800" fill="currentColor" letter-spacing="-0.5">Aqua<tspan fill="#38bdf8">Watch</tspan></text>
+</svg>

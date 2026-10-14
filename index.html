@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>AquaWatch — Civic Water Quality Monitoring &amp; Telemetry Portal</title>
+  <meta name="description" content="Real-time chemical telemetry, autonomous river monitoring nodes, and immediate citizen incident reporting across all 8 municipal watershed basins.">
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+
+  <!-- Material Symbols Outlined -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+  <!-- Google Fonts: Space Grotesk, Hanken Grotesk, JetBrains Mono -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN with Container Queries and Forms -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <!-- Tailwind Theme Configuration -->
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-fixed-dim": "#93ccff",
+            "on-secondary-fixed": "#001f26",
+            "tertiary-fixed": "#cce5ff",
+            "on-tertiary-container": "#00486f",
+            "on-tertiary": "#003351",
+            "surface-container": "#171f35",
+            "inverse-on-surface": "#283047",
+            "primary-fixed": "#c4e7ff",
+            "surface": "#0a1228",
+            "surface-container-low": "#131b31",
+            "on-error": "#690005",
+            "outline-variant": "#3e484f",
+            "surface-container-high": "#222940",
+            "surface-tint": "#7bd0ff",
+            "on-surface": "#dbe1ff",
+            "outline": "#87929a",
+            "on-tertiary-fixed-variant": "#004b73",
+            "inverse-primary": "#00668a",
+            "surface-variant": "#2c344c",
+            "primary-container": "#38bdf8",
+            "surface-dim": "#0a1228",
+            "on-surface-variant": "#bdc8d1",
+            "on-primary-fixed": "#001e2c",
+            "on-secondary-fixed-variant": "#004e5c",
+            "surface-container-lowest": "#050d23",
+            "surface-bright": "#313850",
+            "on-background": "#dbe1ff",
+            "secondary-fixed-dim": "#4cd7f6",
+            "background": "#0a1228",
+            "error-container": "#93000a",
+            "tertiary": "#a1d2ff",
+            "on-secondary": "#003640",
+            "on-secondary-container": "#00424e",
+            "on-tertiary-fixed": "#001d31",
+            "surface-container-highest": "#2c344c",
+            "primary": "#8ed5ff",
+            "tertiary-container": "#5cb9ff",
+            "on-primary": "#00354a",
+            "on-primary-fixed-variant": "#004c69",
+            "on-error-container": "#ffdad6",
+            "on-primary-container": "#004965",
+            "secondary-container": "#03b5d3",
+            "secondary": "#4cd7f6",
+            "inverse-surface": "#dbe1ff",
+            "error": "#ffb4ab",
+            "secondary-fixed": "#acedff",
+            "primary-fixed-dim": "#7bd0ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-xl": "2.5rem",
+            "margin-mobile": "1rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "gutter-mobile": "0.75rem",
+            "margin": "2rem",
+            "gutter": "1.5rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "headline-sm": ["Space Grotesk"],
+            "headline-xl": ["Space Grotesk"],
+            "headline-xl-mobile": ["Space Grotesk"],
+            "headline-lg-mobile": ["Space Grotesk"],
+            "label-sm": ["JetBrains Mono"],
+            "body-sm": ["Hanken Grotesk"],
+            "body-md": ["Hanken Grotesk"],
+            "headline-md": ["Space Grotesk"],
+            "label-lg": ["JetBrains Mono"],
+            "label-md": ["JetBrains Mono"],
+            "headline-lg": ["Space Grotesk"],
+            "body-lg": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "500" }],
+            "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-xl-mobile": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "500" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+
+  <!-- AquaWatch Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-background text-on-surface font-body-md telemetry-grid min-h-screen selection:bg-primary selection:text-surface-container-lowest antialiased flex flex-col">
+
+  <!-- 1. Top Emergency Advisory Banner (Fixed on top) -->
+  <aside class="sticky top-0 z-50 w-full bg-[#1b1509]/95 backdrop-blur-md border-b border-[#f59e0b]/40 py-2.5 px-space-md lg:px-space-xl flex items-center justify-between transition-all duration-300" id="emergency-banner">
+    <div class="max-w-7xl mx-auto w-full flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <span class="flex h-2.5 w-2.5 relative">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#f59e0b] opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#f59e0b]"></span>
+        </span>
+        <span class="material-symbols-outlined text-[#f59e0b] text-[20px]" data-icon="warning">warning</span>
+        <p class="font-body-sm text-body-sm text-[#fef3c7] font-medium tracking-wide">
+          <strong class="font-label-sm text-label-sm uppercase tracking-wider text-[#f59e0b] mr-1">PRECAUTIONARY ADVISORY:</strong> 
+          Temporary elevated turbidity recorded in West Canal District. Filtration plants operating at 100% capacity.
+        </p>
+      </div>
+      <div class="flex items-center gap-4 shrink-0">
+        <button class="trigger-boil-modal font-label-sm text-label-sm text-[#fcd34d] hover:text-[#ffffff] underline underline-offset-4 decoration-[#f59e0b]/60 flex items-center gap-1 font-semibold transition-colors">
+          View Safe Drinking Guide
+          <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+        </button>
+        <button aria-label="Dismiss Advisory" class="text-[#f59e0b]/70 hover:text-[#fef3c7] p-1 rounded-lg hover:bg-[#f59e0b]/10 transition-colors" onclick="document.getElementById('emergency-banner').remove()" title="Dismiss Advisory">
+          <span class="material-symbols-outlined text-[18px]" data-icon="close">close</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 2. Navigation Header (TopNavBar Anchor from Design System & Specs) -->
+  <header class="w-full px-space-md lg:px-space-xl flex items-center justify-between h-16 bg-surface-container-low/80 dark:bg-surface-container-lowest/80 backdrop-blur-md border-b border-outline-variant/30 sticky top-[41px] z-40">
+    <div class="flex items-center gap-8">
+      <!-- Brand Logo -->
+      <a class="flex items-center gap-2.5 group" href="#">
+        <div class="w-9 h-9 rounded-lg bg-primary-container/10 border border-primary-container/40 p-1 flex items-center justify-center group-hover:scale-105 transition-transform cyan-halo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="w-full h-full" fill="none">
+            <path d="M24 6C24 6 10 22 10 31C10 38.732 16.268 45 24 45C31.732 45 38 38.732 38 31C38 22 24 6 24 6Z" fill="url(#navAquaGrad)"/>
+            <path d="M24 16C24 16 16 26 16 32C16 36.4183 19.5817 40 24 40C28.4183 40 32 36.4183 32 32C32 26 24 16 24 16Z" fill="#0891b2" opacity="0.6"/>
+            <circle cx="21" cy="27" r="3" fill="#ffffff" opacity="0.8"/>
+            <defs>
+              <linearGradient id="navAquaGrad" x1="10" y1="6" x2="38" y2="45" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#38bdf8"/>
+                <stop offset="1" stop-color="#0284c7"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary tracking-tight">AquaWatch</span>
+      </a>
+
+      <!-- Primary Navigation Links -->
+      <nav class="hidden md:flex items-center space-x-6">
+        <a class="text-primary dark:text-primary font-semibold border-b-2 border-primary pb-1 text-label-md font-label-md flex items-center gap-1.5 shadow-[0_1px_12px_rgba(56,189,248,0.3)]" href="#">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
+          Live Overview
+        </a>
+        <a class="text-on-surface-variant hover:text-on-surface text-label-md font-label-md transition-colors duration-150" href="#station-map-section">Monitoring Stations</a>
+        <a class="text-on-surface-variant hover:text-on-surface text-label-md font-label-md transition-colors duration-150" href="#incident-feed">Incident Feed</a>
+        <a class="text-on-surface-variant hover:text-on-surface text-label-md font-label-md transition-colors duration-150" href="#educational-section">Awareness &amp; Guides</a>
+        <button class="trigger-quiz-modal text-on-surface-variant hover:text-on-surface text-label-md font-label-md transition-colors duration-150 text-left">Safety Quiz</button>
+      </nav>
+    </div>
+
+    <!-- Right Controls Cluster -->
+    <div class="flex items-center gap-3 relative">
+      <!-- Dark/Light Mode Pill Toggle -->
+      <button id="theme-toggle-btn" aria-label="Toggle Theme" class="flex items-center bg-surface-container-high/60 border border-outline-variant/40 rounded-full p-1 text-on-surface-variant hover:text-primary transition-all" title="Toggle Dark/Light Theme">
+        <span id="icon-dark-mode" class="material-symbols-outlined text-[16px] px-1.5 py-0.5 rounded-full bg-surface-container text-primary" data-icon="dark_mode">dark_mode</span>
+        <span id="icon-light-mode" class="material-symbols-outlined text-[16px] px-1.5 py-0.5 text-outline hover:text-on-surface" data-icon="light_mode">light_mode</span>
+      </button>
+
+      <!-- Alert Notification Bell with Badge & Dropdown -->
+      <div class="relative">
+        <button id="notification-bell-btn" aria-label="Notifications" class="relative p-2 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high/50 transition-colors" title="Civic Alerts & Notifications">
+          <span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+          <span id="notification-badge" class="absolute top-1.5 right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-error text-surface-container-lowest font-label-sm text-[9px] font-bold">2</span>
+        </button>
+
+        <!-- Notification Dropdown Panel -->
+        <div id="notification-dropdown" class="hidden absolute right-0 mt-2 w-80 sm:w-96 glass-panel-l2 rounded-xl p-4 border border-outline-variant/40 shadow-2xl z-50">
+          <div class="flex items-center justify-between pb-3 border-b border-outline-variant/30 mb-3">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-[18px]">notifications_active</span>
+              <span class="font-headline-sm text-sm font-bold text-on-surface">Municipal Alert Feed</span>
+            </div>
+            <button id="clear-notifications-btn" class="font-label-sm text-[11px] text-primary hover:underline">Mark all read</button>
+          </div>
+          <div class="space-y-2.5 max-h-72 overflow-y-auto">
+            <div class="p-2.5 rounded-lg bg-[#f59e0b]/10 border border-[#f59e0b]/30">
+              <div class="flex items-center justify-between font-label-sm text-[11px] text-[#fcd34d] mb-1">
+                <span class="font-bold">Turbidity Notice</span>
+                <span>15m ago</span>
+              </div>
+              <p class="font-body-sm text-[12px] text-[#fef3c7]">West Canal monitoring node 02 recorded turbidity variance exceeding 4.0 NTU limit.</p>
+            </div>
+            <div class="p-2.5 rounded-lg bg-surface-container-high/50 border border-outline-variant/30">
+              <div class="flex items-center justify-between font-label-sm text-[11px] text-primary mb-1">
+                <span class="font-bold">Field Unit #4 Dispatched</span>
+                <span>45m ago</span>
+              </div>
+              <p class="font-body-sm text-[12px] text-on-surface-variant">Response team en route to inspect water hydrants on Willow Way.</p>
+            </div>
+            <div class="p-2.5 rounded-lg bg-[#22c55e]/10 border border-[#22c55e]/30">
+              <div class="flex items-center justify-between font-label-sm text-[11px] text-[#4ade80] mb-1">
+                <span class="font-bold">Incident Resolved</span>
+                <span>3h ago</span>
+              </div>
+              <p class="font-body-sm text-[12px] text-on-surface-variant">Main pressure drop on 5th Street resolved. Pressure recalibrated to 62 PSI.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Primary Gradient CTA -->
+      <button class="trigger-report-modal hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-gradient-to-r from-[#0284c7] to-[#06b6d4] text-surface-container-lowest font-headline-sm text-label-md font-bold tracking-wide cyan-halo active:scale-[0.98] transition-all hover:brightness-110">
+        <span class="material-symbols-outlined text-[18px]" data-icon="add_circle">add_circle</span>
+        <span>Report Issue</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN VIEWPORT CANVAS -->
+  <main class="flex-1 max-w-7xl mx-auto w-full px-space-md lg:px-space-xl py-space-lg flex flex-col gap-10">
+
+    <!-- 3. Hero Section (Split 2-Column Grid) -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-2">
+      <!-- Left Column: Content & Metrics -->
+      <div class="lg:col-span-7 flex flex-col gap-5">
+        <!-- Live Badge -->
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container/10 border border-primary-container/40 text-primary-container w-fit text-label-sm font-label-sm tracking-wider">
+          <span class="w-2 h-2 rounded-full bg-[#22c55e] pulse-glow"></span>
+          LIVE CIVIC TELEMETRY • SENSORS ONLINE
+        </div>
+
+        <!-- Headline & Subheadline -->
+        <div class="space-y-3">
+          <h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight leading-[1.15]">
+            Empowering Communities with Pure, Transparent <span class="bg-gradient-to-r from-primary via-secondary to-primary-container bg-clip-text text-transparent">Water Intelligence</span>.
+          </h1>
+          <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
+            Real-time chemical telemetry, autonomous river monitoring nodes, and immediate citizen incident reporting across all 8 municipal watershed basins.
+          </p>
+        </div>
+
+        <!-- CTA Row -->
+        <div class="flex flex-wrap items-center gap-4 pt-1">
+          <button class="trigger-report-modal px-5 py-2.5 rounded-lg bg-gradient-to-r from-[#0284c7] to-[#06b6d4] text-surface-container-lowest font-headline-sm text-body-md font-bold tracking-wide flex items-center gap-2 cyan-halo hover:brightness-110 transition-all active:scale-[0.98]">
+            <span class="material-symbols-outlined text-[20px]" data-icon="report_problem">report_problem</span>
+            <span>Report a Contamination Issue</span>
+          </button>
+          <a class="px-5 py-2.5 rounded-lg bg-surface-container-high/70 border border-primary/30 text-primary font-headline-sm text-body-md font-semibold flex items-center gap-2 hover:bg-primary/10 hover:border-primary transition-all" href="#station-map-section">
+            <span class="material-symbols-outlined text-[20px]" data-icon="explore">explore</span>
+            <span>Explore Live Stations</span>
+          </a>
+        </div>
+
+        <!-- 3-Stat Metric Strip -->
+        <div class="grid grid-cols-3 gap-3 pt-3">
+          <div class="glass-panel-l1 rounded-xl p-3.5 border-t-2 border-t-primary-container">
+            <div class="font-headline-lg text-headline-lg text-primary font-bold">92%</div>
+            <div class="font-label-sm text-label-sm text-on-surface-variant">Potable Compliance</div>
+            <div class="font-label-sm text-[10px] text-[#22c55e] font-semibold mt-0.5 flex items-center gap-0.5">
+              <span class="material-symbols-outlined text-[12px]" data-icon="trending_up">trending_up</span> +2.4% vs last week
+            </div>
+          </div>
+          <div class="glass-panel-l1 rounded-xl p-3.5 border-t-2 border-t-secondary">
+            <div class="font-headline-lg text-headline-lg text-secondary font-bold">8 Stations</div>
+            <div class="font-label-sm text-label-sm text-on-surface-variant">Continuous Active Nodes</div>
+            <div class="font-label-sm text-[10px] text-primary-fixed-dim font-semibold mt-0.5">100% telemetry uptime</div>
+          </div>
+          <div class="glass-panel-l1 rounded-xl p-3.5 border-t-2 border-t-tertiary">
+            <div class="font-headline-lg text-headline-lg text-tertiary font-bold">&lt; 15 Mins</div>
+            <div class="font-label-sm text-label-sm text-on-surface-variant">Dispatch Response</div>
+            <div class="font-label-sm text-[10px] text-on-surface-variant font-medium mt-0.5">Avg civic resolution</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Visual Showcase Card with Image and Telemetry Badge -->
+      <div class="lg:col-span-5 relative group">
+        <div class="relative rounded-2xl overflow-hidden glass-panel-l2 p-2.5">
+          <!-- Main Hero Image Asset -->
+          <div class="relative rounded-xl overflow-hidden aspect-[16/10] w-full bg-[#081226]">
+            <img alt="Ultra-modern civic water monitoring laboratory overlooking pristine watershed basin at dusk" 
+                 class="w-full h-full object-cover rounded-xl brightness-95 group-hover:scale-[1.03] transition-transform duration-700 ease-out" 
+                 src="assets/hero.jpg"
+                 onerror="this.src='https://lh3.googleusercontent.com/aida-public/AB6AXuBLwrA3S5cL24ALPhoEJPtoDYCds4vlkPiRG59gFnJKkGPvC5jfHOC8DQ5e9I3rUv8V8H-X53V5arXxQVeJtRiCL_uUBJC3_v1SeyMr952jBif8l-h3ikKnwQdqq8G3g7XQolaMn6vegi0F-5EcwiSyRj7lMUo_24asvAhr8isfQrcSaLATS6NNWpQrAeqsUcmFuxOr0oMm9VQZ3p-JFEoqiSbQmATj7Sw8lClfLHLPqaG0f09wYkmm'">
+            <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-transparent to-transparent pointer-events-none"></div>
+          </div>
+
+          <!-- Overlaid Floating Real-Time Telemetry Card -->
+          <div class="absolute bottom-6 left-6 right-6 glass-panel-l2 rounded-xl p-3.5 border border-primary-container/40 cyan-halo backdrop-blur-xl">
+            <div class="flex items-center justify-between border-b border-outline-variant/30 pb-2 mb-2">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-[#22c55e] pulse-glow"></span>
+                <span id="hero-badge-title" class="font-headline-sm text-headline-sm text-on-surface text-sm font-semibold">Station #01 — Central Confluence</span>
+              </div>
+              <span id="hero-badge-status" class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-[#22c55e]/20 text-[#4ade80] border border-[#22c55e]/40 font-semibold uppercase">Safe</span>
+            </div>
+            <!-- Dynamic Metrics Line -->
+            <div class="flex items-center justify-between text-on-surface-variant font-label-md text-label-md">
+              <div><span class="text-outline">pH</span> <strong id="hero-badge-ph" class="text-primary font-bold">7.32</strong></div>
+              <div><span class="text-outline">DO</span> <strong id="hero-badge-do" class="text-secondary font-bold">8.4 mg/L</strong></div>
+              <div><span class="text-outline">Turbidity</span> <strong id="hero-badge-turb" class="text-tertiary font-bold">1.6 NTU</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Water Quality Index (WQI) Dashboard Summary -->
+    <section class="glass-panel-l1 rounded-2xl p-6 lg:p-8 relative overflow-hidden">
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-outline-variant/20 pb-5">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[24px]" data-icon="health_and_safety">health_and_safety</span>
+            <h2 class="font-headline-lg text-headline-lg text-on-surface">Regional Water Quality Index (WQI)</h2>
+          </div>
+          <p class="font-label-md text-label-md text-on-surface-variant mt-1">
+            Standard Composite Index governed under Municipal Protocol 4.2 • Safe limit: &gt; 80
+          </p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <button id="toggle-simulation-btn" class="flex items-center gap-1.5 text-label-sm font-label-sm bg-surface-container-high/60 px-3 py-1.5 rounded-lg border border-outline-variant/30 text-[#4ade80] hover:bg-surface-container-high transition-colors" title="Toggle live micro-fluctuation jitter">
+            <span class="w-2 h-2 rounded-full bg-[#22c55e] pulse-glow"></span>
+            <span>Live Simulation: Active</span>
+          </button>
+          <div class="flex items-center gap-2 text-outline font-label-sm text-label-sm bg-surface-container-high/40 px-3 py-1.5 rounded-lg border border-outline-variant/30">
+            <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+            <span id="telemetry-last-updated">Updated 2 mins ago across 8 sensing nodes</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Gauge + Metric Chips Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-6">
+        <!-- Prominent Circular SVG Gauge -->
+        <div class="lg:col-span-4 flex flex-col items-center justify-center p-4">
+          <div class="relative w-48 h-48 flex items-center justify-center">
+            <!-- Background Circular Track -->
+            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 120 120">
+              <circle cx="60" cy="60" fill="transparent" r="50" stroke="rgba(44, 52, 76, 0.6)" stroke-width="8"></circle>
+              <!-- Animated Progress Circle -->
+              <circle id="wqi-gauge-circle" class="transition-all duration-1000 ease-out drop-shadow-[0_0_8px_rgba(56,189,248,0.7)]" cx="60" cy="60" fill="transparent" r="50" stroke="url(#cyan-gradient)" stroke-dasharray="314.159" stroke-dashoffset="37.7" stroke-linecap="round" stroke-width="9"></circle>
+              <defs>
+                <linearGradient id="cyan-gradient" x1="0%" x2="100%" y1="0%" y2="100%">
+                  <stop offset="0%" stop-color="#22c55e"></stop>
+                  <stop offset="60%" stop-color="#38bdf8"></stop>
+                  <stop offset="100%" stop-color="#03b5d3"></stop>
+                </linearGradient>
+              </defs>
+            </svg>
+            <!-- Gauge Center Label -->
+            <div class="absolute flex flex-col items-center text-center">
+              <span id="wqi-gauge-score" class="font-headline-xl text-[44px] leading-tight font-bold text-on-surface">88</span>
+              <span class="font-label-sm text-[10px] text-primary-container font-semibold uppercase tracking-wider">Composite Score</span>
+            </div>
+          </div>
+          <div class="mt-3 text-center">
+            <span id="wqi-status-badge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#22c55e]/15 text-[#4ade80] border border-[#22c55e]/30 font-label-md text-label-md font-bold">
+              <span class="material-symbols-outlined text-[16px]" data-icon="check_circle">check_circle</span>
+              Optimal Watershed Health
+            </span>
+          </div>
+        </div>
+
+        <!-- 4-Metric Glass Chips Grid with Interactive Hover Tooltips -->
+        <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Metric 1: pH -->
+          <div class="glass-panel-l2 rounded-xl p-4 border border-outline-variant/30 hover:border-primary-container transition-all group relative has-tooltip">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1">
+                Average pH
+                <span class="material-symbols-outlined text-[14px] text-outline group-hover:text-primary transition-colors cursor-help" data-icon="info">info</span>
+              </span>
+              <span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-[#22c55e]/15 text-[#4ade80] border border-[#22c55e]/30 font-semibold">Safe</span>
+            </div>
+            <div class="flex items-baseline gap-2">
+              <span id="metric-ph-val" class="font-headline-lg text-headline-lg font-bold text-primary">7.32</span>
+              <span class="font-label-sm text-label-sm text-outline">Standard: 6.5 - 8.5</span>
+            </div>
+            <p class="font-body-sm text-body-sm text-on-surface-variant/80 mt-2">
+              Indicates balanced acidity. Prevents pipe corrosion and preserves biological stability in all civic distribution reservoirs.
+            </p>
+            <!-- Hover Tooltip -->
+            <div class="tooltip-box absolute bottom-full left-4 mb-2 w-64 p-3 rounded-lg bg-surface-container-highest border border-primary/40 shadow-2xl text-[12px] z-20">
+              <div class="font-bold text-primary mb-1">Municipal Protocol: pH Scale</div>
+              Water below 6.5 accelerates heavy metal leaching from copper/lead joints. Above 8.5 creates mineral scaling and alters taste.
+            </div>
+          </div>
+
+          <!-- Metric 2: Turbidity -->
+          <div class="glass-panel-l2 rounded-xl p-4 border border-outline-variant/30 hover:border-primary-container transition-all group relative has-tooltip">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1">
+                Mean Turbidity
+                <span class="material-symbols-outlined text-[14px] text-outline group-hover:text-primary transition-colors cursor-help" data-icon="info">info</span>
+              </span>
+              <span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-[#22c55e]/15 text-[#4ade80] border border-[#22c55e]/30 font-semibold">Normal</span>
+            </div>
+            <div class="flex items-baseline gap-2">
+              <span id="metric-turbidity-val" class="font-headline-lg text-headline-lg font-bold text-secondary">1.6</span>
+              <span class="font-label-sm text-label-sm text-outline">NTU (Limit &lt; 5.0)</span>
+            </div>
+            <p class="font-body-sm text-body-sm text-on-surface-variant/80 mt-2">
+              Measure of water clarity. Low suspended particulate ensures ultraviolet disinfectant penetration remains completely effective.
+            </p>
+            <!-- Hover Tooltip -->
+            <div class="tooltip-box absolute bottom-full left-4 mb-2 w-64 p-3 rounded-lg bg-surface-container-highest border border-secondary/40 shadow-2xl text-[12px] z-20">
+              <div class="font-bold text-secondary mb-1">NTU Clarity Standard</div>
+              Nephelometric Turbidity Units gauge light scattering. Target is under 1.0 NTU for direct culinary tap distribution.
+            </div>
+          </div>
+
+          <!-- Metric 3: Dissolved Oxygen -->
+          <div class="glass-panel-l2 rounded-xl p-4 border border-outline-variant/30 hover:border-primary-container transition-all group relative has-tooltip">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1">
+                Dissolved Oxygen
+                <span class="material-symbols-outlined text-[14px] text-outline group-hover:text-primary transition-colors cursor-help" data-icon="info">info</span>
+              </span>
+              <span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-[#22c55e]/15 text-[#4ade80] border border-[#22c55e]/30 font-semibold">Excellent</span>
+            </div>
+            <div class="flex items-baseline gap-2">
+              <span id="metric-do-val" class="font-headline-lg text-headline-lg font-bold text-tertiary">8.4</span>
+              <span class="font-label-sm text-label-sm text-outline">mg/L (Aeration Optimal)</span>
+            </div>
+            <p class="font-body-sm text-body-sm text-on-surface-variant/80 mt-2">
+              High oxygen indicates vigorous river turnover and minimal organic decay, sustaining the natural river basin ecosystem.
+            </p>
+            <!-- Hover Tooltip -->
+            <div class="tooltip-box absolute bottom-full left-4 mb-2 w-64 p-3 rounded-lg bg-surface-container-highest border border-tertiary/40 shadow-2xl text-[12px] z-20">
+              <div class="font-bold text-tertiary mb-1">Ecological Turnover</div>
+              DO levels above 7.0 mg/L maintain fish populations and prevent anaerobic odors and hydrogen sulfide formation.
+            </div>
+          </div>
+
+          <!-- Metric 4: Lead Content -->
+          <div class="glass-panel-l2 rounded-xl p-4 border border-outline-variant/30 hover:border-primary-container transition-all group relative has-tooltip">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1">
+                Lead Content
+                <span class="material-symbols-outlined text-[14px] text-outline group-hover:text-primary transition-colors cursor-help" data-icon="info">info</span>
+              </span>
+              <span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-[#22c55e]/15 text-[#4ade80] border border-[#22c55e]/30 font-semibold">Compliant</span>
+            </div>
+            <div class="flex items-baseline gap-2">
+              <span id="metric-lead-val" class="font-headline-lg text-headline-lg font-bold text-[#8ed5ff]">&lt; 0.002</span>
+              <span class="font-label-sm text-label-sm text-outline">ppm (EPA limit 0.015)</span>
+            </div>
+            <p class="font-body-sm text-body-sm text-on-surface-variant/80 mt-2">
+              Heavy metal sensor sweeps in primary mains register well below federal action limits, verifying municipal pipe anti-corrosion lining.
+            </p>
+            <!-- Hover Tooltip -->
+            <div class="tooltip-box absolute bottom-full left-4 mb-2 w-64 p-3 rounded-lg bg-surface-container-highest border border-[#8ed5ff]/40 shadow-2xl text-[12px] z-20">
+              <div class="font-bold text-[#8ed5ff] mb-1">Heavy Metal Monitoring</div>
+              Continuous anodic stripping voltammetry detects trace lead and cadmium before water leaves transmission reservoirs.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Interactive Watershed & Station Map (Main Visual Anchor) -->
+    <section class="glass-panel-l2 rounded-2xl p-6 lg:p-8 flex flex-col gap-6 relative" id="station-map-section">
+      <!-- Header with Status Legend & Layer Toggles -->
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-secondary text-[26px]" data-icon="map">map</span>
+            <h2 class="font-headline-lg text-headline-lg text-on-surface">Interactive Watershed &amp; Sensor Grid</h2>
+          </div>
+          <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+            Real-time GIS telemetry overlay across Municipal Basin 08. Select node pins for telemetry drilldown.
+          </p>
+        </div>
+
+        <!-- Legend and Layer Switches -->
+        <div class="flex flex-wrap items-center gap-3">
+          <!-- Status Chips -->
+          <div class="flex items-center gap-2 bg-surface-container/60 p-1 rounded-lg border border-outline-variant/30">
+            <span class="font-label-sm text-label-sm px-2 py-1 rounded bg-[#22c55e]/15 text-[#4ade80] flex items-center gap-1.5 font-bold">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#22c55e]"></span> Safe (6)
+            </span>
+            <span class="font-label-sm text-label-sm px-2 py-1 rounded bg-[#f59e0b]/15 text-[#fcd34d] flex items-center gap-1.5 font-bold">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#f59e0b]"></span> Advisory (2)
+            </span>
+            <span class="font-label-sm text-label-sm px-2 py-1 rounded bg-[#ef4444]/15 text-[#fca5a5] flex items-center gap-1.5 font-bold">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#ef4444]"></span> Critical (0)
+            </span>
+          </div>
+
+          <!-- Layer Toggles -->
+          <div class="flex items-center gap-1.5">
+            <button id="toggle-flow-vectors" class="px-3 py-1 rounded-lg bg-primary-container/20 border border-primary text-primary font-label-sm text-label-sm flex items-center gap-1 hover:bg-primary/20 transition-colors" title="Toggle River Flow Direction Vectors">
+              <span class="material-symbols-outlined text-[14px]" data-icon="air">air</span> Flow Vectors
+            </button>
+            <button id="toggle-pollution-layer" class="px-3 py-1 rounded-lg bg-surface-container-high/60 border border-outline-variant/40 text-on-surface-variant font-label-sm text-label-sm flex items-center gap-1 hover:text-on-surface hover:border-outline transition-colors" title="Toggle Sensor Coverage Heat Aura">
+              <span class="material-symbols-outlined text-[14px]" data-icon="sensors">sensors</span> Sensor Radii
+            </button>
+            <button id="toggle-treatment-centers" class="px-3 py-1 rounded-lg bg-surface-container-high/60 border border-outline-variant/40 text-on-surface-variant font-label-sm text-label-sm flex items-center gap-1 hover:text-on-surface hover:border-outline transition-colors" title="Toggle Municipal Filtration & UV Plants">
+              <span class="material-symbols-outlined text-[14px]" data-icon="water_drop">water_drop</span> Treatment Plants
+            </button>
+            <button id="export-telemetry-btn" class="px-3 py-1 rounded-lg bg-surface-container-high/60 border border-outline-variant/40 text-primary font-label-sm text-label-sm flex items-center gap-1 hover:border-primary transition-colors" title="Export Live Telemetry to CSV">
+              <span class="material-symbols-outlined text-[14px]" data-icon="download">download</span> CSV
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vector Schematic Map Container (High-Tech Oceanic GIS Presentation) -->
+      <div class="relative w-full h-[520px] bg-[#070e24] rounded-xl overflow-hidden border border-primary/20 shadow-inner select-none">
+        
+        <!-- SVG Vector Map Canvas -->
+        <svg id="watershed-svg-canvas" class="w-full h-full object-cover" fill="none" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background Grid Coordinate Lines -->
+          <defs>
+            <pattern height="50" id="grid-pattern" patternUnits="userSpaceOnUse" width="50">
+              <path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(56, 189, 248, 0.05)" stroke-width="1"></path>
+            </pattern>
+            <linearGradient id="riverGrad" x1="0%" x2="100%" y1="0%" y2="0%">
+              <stop offset="0%" stop-color="#0284c7" stop-opacity="0.3"></stop>
+              <stop offset="50%" stop-color="#06b6d4" stop-opacity="0.7"></stop>
+              <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.4"></stop>
+            </linearGradient>
+            <radialGradient cx="50%" cy="50%" id="lakeGrad" r="50%">
+              <stop offset="0%" stop-color="#0891b2" stop-opacity="0.5"></stop>
+              <stop offset="100%" stop-color="#0b1329" stop-opacity="0.1"></stop>
+            </radialGradient>
+          </defs>
+
+          <rect fill="url(#grid-pattern)" height="500" width="1000"></rect>
+
+          <!-- Topographic Contour Curves -->
+          <path d="M-50,120 Q200,60 450,150 T950,90" fill="none" stroke="rgba(56, 189, 248, 0.12)" stroke-dasharray="4 6" stroke-width="1.5"></path>
+          <path d="M0,280 Q300,240 600,320 T1050,220" fill="none" stroke="rgba(56, 189, 248, 0.12)" stroke-dasharray="4 6" stroke-width="1.5"></path>
+          <path d="M-20,400 Q250,440 550,380 T1050,430" fill="none" stroke="rgba(56, 189, 248, 0.08)" stroke-dasharray="4 6" stroke-width="1.5"></path>
+
+          <!-- Reservoir Bodies & Lakes -->
+          <!-- North Basin Reservoir -->
+          <ellipse cx="220" cy="130" fill="url(#lakeGrad)" rx="90" ry="48" stroke="#0284c7" stroke-opacity="0.6" stroke-width="1.5"></ellipse>
+          <text fill="#7bd0ff" font-family="'Space Grotesk', system-ui" font-size="11" font-weight="600" opacity="0.85" text-anchor="middle" x="220" y="135">NORTH BASIN RESERVOIR</text>
+
+          <!-- Pine Reservoir -->
+          <ellipse cx="780" cy="180" fill="url(#lakeGrad)" rx="110" ry="60" stroke="#06b6d4" stroke-opacity="0.6" stroke-width="1.5"></ellipse>
+          <text fill="#7bd0ff" font-family="'Space Grotesk', system-ui" font-size="11" font-weight="600" opacity="0.85" text-anchor="middle" x="780" y="185">PINE DAM RESERVOIR</text>
+
+          <!-- Estuary Delta Zone -->
+          <ellipse cx="620" cy="460" fill="url(#lakeGrad)" rx="70" ry="32" stroke="#0284c7" stroke-opacity="0.4" stroke-width="1.2"></ellipse>
+          <text fill="#7bd0ff" font-family="'Space Grotesk', system-ui" font-size="9" font-weight="600" opacity="0.75" text-anchor="middle" x="620" y="463">ESTUARY DELTA</text>
+
+          <!-- West Canal Arteries -->
+          <path d="M 280,150 C 350,200 380,260 450,280 C 520,300 620,240 700,200" fill="none" stroke="url(#riverGrad)" stroke-linecap="round" stroke-width="12"></path>
+          <path d="M 450,280 C 470,350 490,400 520,490" fill="none" stroke="url(#riverGrad)" stroke-linecap="round" stroke-width="8"></path>
+          <path d="M 120,360 C 220,340 340,300 450,280" fill="none" stroke="url(#riverGrad)" stroke-linecap="round" stroke-width="7"></path>
+          <path d="M 680,220 C 710,290 670,360 620,440" fill="none" stroke="url(#riverGrad)" stroke-linecap="round" stroke-width="6"></path>
+
+          <!-- Dynamic Flow Vector Arrows (Layer Toggleable) -->
+          <g id="layer-flow-vectors" opacity="0.7" stroke="#38bdf8" stroke-linecap="round" stroke-width="2">
+            <line class="flow-stream" x1="330" x2="360" y1="185" y2="205"></line>
+            <polygon fill="#38bdf8" points="362,207 350,201 356,211"></polygon>
+            <line class="flow-stream" x1="560" x2="585" y1="270" y2="255"></line>
+            <polygon fill="#38bdf8" points="588,253 577,255 583,264"></polygon>
+            <line class="flow-stream" x1="475" x2="488" y1="340" y2="370"></line>
+            <polygon fill="#38bdf8" points="490,374 482,364 492,362"></polygon>
+            <line class="flow-stream" x1="210" x2="245" y1="345" y2="335"></line>
+            <polygon fill="#38bdf8" points="248,334 237,338 242,347"></polygon>
+            <line class="flow-stream" x1="660" x2="640" y1="340" y2="380"></line>
+            <polygon fill="#38bdf8" points="638,384 648,375 638,370"></polygon>
+          </g>
+
+          <!-- Pollution Radii Layer (Hidden by default, toggleable) -->
+          <g id="layer-pollution-sensors" style="display: none;">
+            <circle cx="450" cy="280" r="60" fill="rgba(34, 197, 94, 0.08)" stroke="#22c55e" stroke-dasharray="4 4" stroke-width="1"></circle>
+            <circle cx="230" cy="330" r="70" fill="rgba(245, 158, 11, 0.12)" stroke="#f59e0b" stroke-dasharray="4 4" stroke-width="1"></circle>
+            <circle cx="510" cy="440" r="50" fill="rgba(34, 197, 94, 0.08)" stroke="#22c55e" stroke-dasharray="4 4" stroke-width="1"></circle>
+            <circle cx="770" cy="170" r="65" fill="rgba(34, 197, 94, 0.08)" stroke="#22c55e" stroke-dasharray="4 4" stroke-width="1"></circle>
+            <circle cx="190" cy="105" r="55" fill="rgba(34, 197, 94, 0.08)" stroke="#22c55e" stroke-dasharray="4 4" stroke-width="1"></circle>
+          </g>
+
+          <!-- Treatment Centers Layer (Hidden by default, toggleable) -->
+          <g id="layer-treatment-centers" style="display: none;">
+            <g transform="translate(370, 240)">
+              <rect width="28" height="28" rx="6" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5" x="-14" y="-14"></rect>
+              <text x="0" y="4" text-anchor="middle" fill="#ffffff" font-family="'Material Symbols Outlined'" font-size="16">factory</text>
+              <text x="0" y="24" text-anchor="middle" fill="#38bdf8" font-family="'JetBrains Mono'" font-size="8" font-weight="bold">PLANT #1 (UV)</text>
+            </g>
+            <g transform="translate(670, 310)">
+              <rect width="28" height="28" rx="6" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5" x="-14" y="-14"></rect>
+              <text x="0" y="4" text-anchor="middle" fill="#ffffff" font-family="'Material Symbols Outlined'" font-size="16">local_hospital</text>
+              <text x="0" y="24" text-anchor="middle" fill="#38bdf8" font-family="'JetBrains Mono'" font-size="8" font-weight="bold">CHLORINATION #2</text>
+            </g>
+          </g>
+
+          <!-- Station Nodes (Interactive Pins) -->
+          <!-- Node 01 Central (Active Default) -->
+          <g class="cursor-pointer station-pin active-station" data-station="node-01" transform="translate(450, 280)">
+            <circle class="animate-ping" cx="0" cy="0" fill="rgba(34, 197, 94, 0.2)" r="16"></circle>
+            <circle cx="0" cy="0" fill="#22c55e" r="8"></circle>
+            <circle cx="0" cy="0" fill="#ffffff" r="3"></circle>
+            <rect fill="#0f213f" height="20" rx="4" stroke="#38bdf8" stroke-width="1" width="84" x="-42" y="-32"></rect>
+            <text fill="#dbe1ff" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="600" text-anchor="middle" x="0" y="-18">NODE 01 • CENTRAL</text>
+          </g>
+
+          <!-- Node 02 West Industrial / West Canal (Advisory Yellow) -->
+          <g class="cursor-pointer station-pin" data-station="node-02" transform="translate(230, 330)">
+            <circle class="animate-ping" cx="0" cy="0" fill="rgba(245, 158, 11, 0.25)" r="16"></circle>
+            <circle cx="0" cy="0" fill="#f59e0b" r="8"></circle>
+            <circle cx="0" cy="0" fill="#ffffff" r="3"></circle>
+            <rect fill="#0f213f" height="20" rx="4" stroke="#f59e0b" stroke-width="1" width="94" x="-47" y="-32"></rect>
+            <text fill="#fcd34d" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="600" text-anchor="middle" x="0" y="-18">NODE 02 • WEST CANAL</text>
+          </g>
+
+          <!-- Node 03 South Residential -->
+          <g class="cursor-pointer station-pin" data-station="node-03" transform="translate(510, 440)">
+            <circle cx="0" cy="0" fill="#22c55e" r="7"></circle>
+            <circle cx="0" cy="0" fill="#ffffff" r="2.5"></circle>
+            <rect fill="#0f213f" height="18" rx="4" stroke="#38bdf8" stroke-width="0.8" width="90" x="-45" y="-28"></rect>
+            <text fill="#dbe1ff" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle" x="0" y="-16">NODE 03 • SOUTH RES</text>
+          </g>
+
+          <!-- Node 04 Pine Dam -->
+          <g class="cursor-pointer station-pin" data-station="node-04" transform="translate(770, 170)">
+            <circle cx="0" cy="0" fill="#22c55e" r="7"></circle>
+            <circle cx="0" cy="0" fill="#ffffff" r="2.5"></circle>
+            <rect fill="#0f213f" height="18" rx="4" stroke="#38bdf8" stroke-width="0.8" width="80" x="-40" y="-28"></rect>
+            <text fill="#dbe1ff" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle" x="0" y="-16">NODE 04 • PINE DAM</text>
+          </g>
+
+          <!-- Node 05 North Inflow -->
+          <g class="cursor-pointer station-pin" data-station="node-05" transform="translate(190, 105)">
+            <circle cx="0" cy="0" fill="#22c55e" r="7"></circle>
+            <circle cx="0" cy="0" fill="#ffffff" r="2.5"></circle>
+            <rect fill="#0f213f" height="18" rx="4" stroke="#38bdf8" stroke-width="0.8" width="84" x="-42" y="-28"></rect>
+            <text fill="#dbe1ff" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle" x="0" y="-16">NODE 05 • NORTH IN</text>
+          </g>
+
+          <!-- Node 06 East Park Spigots -->
+          <g class="cursor-pointer station-pin" data-station="node-06" transform="translate(620, 240)">
+            <circle cx="0" cy="0" fill="#f59e0b" r="6"></circle>
+            <circle cx="0" cy="0" fill="#ffffff" r="2"></circle>
+            <rect fill="#0f213f" height="18" rx="4" stroke="#f59e0b" stroke-width="0.8" width="84" x="-42" y="-28"></rect>
+            <text fill="#fcd34d" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle" x="0" y="-16">NODE 06 • EAST PARK</text>
+          </g>
+
+          <!-- Node 07 Highland Trunk Line -->
+          <g class="cursor-pointer station-pin" data-station="node-07" transform="translate(630, 120)">
+            <circle cx="0" cy="0" fill="#22c55e" r="6"></circle>
+            <circle cx="0" cy="0" fill="#ffffff" r="2"></circle>
+            <rect fill="#0f213f" height="18" rx="4" stroke="#38bdf8" stroke-width="0.8" width="88" x="-44" y="-28"></rect>
+            <text fill="#dbe1ff" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle" x="0" y="-16">NODE 07 • HIGHLAND</text>
+          </g>
+
+          <!-- Node 08 Estuary Delta Outflow -->
+          <g class="cursor-pointer station-pin" data-station="node-08" transform="translate(680, 460)">
+            <circle cx="0" cy="0" fill="#22c55e" r="6"></circle>
+            <circle cx="0" cy="0" fill="#ffffff" r="2"></circle>
+            <rect fill="#0f213f" height="18" rx="4" stroke="#38bdf8" stroke-width="0.8" width="80" x="-40" y="-28"></rect>
+            <text fill="#dbe1ff" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle" x="0" y="-16">NODE 08 • ESTUARY</text>
+          </g>
+        </svg>
+
+        <!-- Floating Interactive Telemetry Overlay Detail Card -->
+        <div class="absolute bottom-4 right-4 max-w-sm w-full glass-panel-l2 rounded-xl p-4 border border-primary/40 cyan-halo backdrop-blur-2xl">
+          <div class="flex items-center justify-between border-b border-outline-variant/30 pb-2.5 mb-2.5">
+            <div>
+              <div id="overlay-station-title" class="font-headline-sm text-headline-sm text-on-surface font-semibold flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-[#22c55e]"></span>
+                Station #01 — Central Confluence
+              </div>
+              <div id="overlay-station-coords" class="font-label-sm text-label-sm text-outline">Lat 45.521 • Long -122.676 • Elev 42m</div>
+            </div>
+            <span id="overlay-station-status" class="font-label-sm text-[10px] px-2 py-0.5 rounded bg-primary-container/20 text-primary-container border border-primary-container/40 font-bold">ONLINE</span>
+          </div>
+
+          <!-- Micro Metric Stat Grid -->
+          <div class="grid grid-cols-3 gap-2 py-1 text-center">
+            <div class="bg-surface-container/60 rounded-lg p-2 border border-outline-variant/20">
+              <div class="font-label-sm text-[10px] text-outline uppercase">Water Temp</div>
+              <div id="overlay-station-temp" class="font-headline-sm text-headline-sm font-bold text-primary">16.4°C</div>
+            </div>
+            <div class="bg-surface-container/60 rounded-lg p-2 border border-outline-variant/20">
+              <div class="font-label-sm text-[10px] text-outline uppercase">Flow Rate</div>
+              <div id="overlay-station-flow" class="font-headline-sm text-headline-sm font-bold text-secondary">42.8 m³/s</div>
+            </div>
+            <div class="bg-surface-container/60 rounded-lg p-2 border border-outline-variant/20">
+              <div class="font-label-sm text-[10px] text-outline uppercase">Battery</div>
+              <div id="overlay-station-battery" class="font-headline-sm text-headline-sm font-bold text-[#4ade80]">98%</div>
+            </div>
+          </div>
+
+          <!-- Telemetry Sparkline SVG -->
+          <div class="mt-2.5 pt-2 border-t border-outline-variant/20">
+            <div class="flex justify-between items-center mb-1 text-[11px] font-label-sm">
+              <span class="text-outline">24h Dissolved Oxygen Trend</span>
+              <span id="overlay-trend-text" class="text-primary font-bold">Stable (8.4 mg/L)</span>
+            </div>
+            <svg class="w-full h-8" fill="none" viewBox="0 0 200 30">
+              <path id="overlay-sparkline-path" d="M0,20 Q25,12 50,18 T100,10 T150,14 T200,8" fill="none" stroke="#38bdf8" stroke-width="2"></path>
+              <path id="overlay-sparkline-area" d="M0,20 Q25,12 50,18 T100,10 T150,14 T200,8 L200,30 L0,30 Z" fill="rgba(56, 189, 248, 0.1)"></path>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Map Navigation Controls (Zoom In, Zoom Out, Reset) -->
+        <div class="absolute top-4 left-4 flex flex-col gap-1 bg-surface-container-high/80 backdrop-blur-md p-1.5 rounded-lg border border-outline-variant/30 text-on-surface-variant">
+          <button id="map-zoom-in" class="w-7 h-7 flex items-center justify-center hover:text-primary transition-colors font-bold text-lg" title="Zoom In">+</button>
+          <div class="w-full h-[1px] bg-outline-variant/30"></div>
+          <button id="map-zoom-out" class="w-7 h-7 flex items-center justify-center hover:text-primary transition-colors font-bold text-lg" title="Zoom Out">-</button>
+          <div class="w-full h-[1px] bg-outline-variant/30"></div>
+          <button id="map-zoom-reset" class="w-7 h-7 flex items-center justify-center hover:text-primary transition-colors text-xs" title="Reset View">
+            <span class="material-symbols-outlined text-[16px]">restart_alt</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Civic Incident Live Feed -->
+    <section class="glass-panel-l1 rounded-2xl p-6 lg:p-8 flex flex-col gap-6" id="incident-feed">
+      <!-- Feed Section Header -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[24px]" data-icon="forum">forum</span>
+            <h2 class="font-headline-lg text-headline-lg text-on-surface">Civic Incident Live Feed</h2>
+          </div>
+          <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+            Verified resident reports, utility field-dispatch updates, and real-time community water alerts.
+          </p>
+        </div>
+
+        <!-- Centered / Aligned File Report Button -->
+        <button class="trigger-report-modal px-4 py-2 rounded-lg bg-gradient-to-r from-[#0284c7] to-[#06b6d4] text-surface-container-lowest font-headline-sm text-body-md font-bold tracking-wide flex items-center gap-1.5 cyan-halo hover:brightness-110 active:scale-[0.98] transition-all shrink-0">
+          <span class="material-symbols-outlined text-[18px]" data-icon="add_alert">add_alert</span>
+          <span>File a New Community Water Report</span>
+        </button>
+      </div>
+
+      <!-- Filter Bar Chips -->
+      <div class="flex flex-wrap items-center gap-2 border-b border-outline-variant/20 pb-4">
+        <button class="feed-filter-btn px-3 py-1.5 rounded-lg bg-primary/20 border border-primary text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1.5 transition-colors" data-filter="all">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+          All Issues (14)
+        </button>
+        <button class="feed-filter-btn px-3 py-1.5 rounded-lg bg-surface-container-high/50 border border-outline-variant/30 text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" data-filter="discoloration">
+          Discoloration (5)
+        </button>
+        <button class="feed-filter-btn px-3 py-1.5 rounded-lg bg-surface-container-high/50 border border-outline-variant/30 text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" data-filter="odor">
+          Odor / Smell (3)
+        </button>
+        <button class="feed-filter-btn px-3 py-1.5 rounded-lg bg-surface-container-high/50 border border-outline-variant/30 text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" data-filter="pressure">
+          Low Pressure (4)
+        </button>
+        <button class="feed-filter-btn px-3 py-1.5 rounded-lg bg-surface-container-high/50 border border-outline-variant/30 text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" data-filter="sheen">
+          Chemical Sheen (2)
+        </button>
+      </div>
+
+      <!-- Dynamic Feed Cards Stack -->
+      <div id="incident-cards-container" class="space-y-3.5">
+        <!-- Rendered by app.js -->
+      </div>
+    </section>
+
+    <!-- 7. Water Safety & Educational Highlights (3-Column Card Grid) -->
+    <section class="flex flex-col gap-6" id="educational-section">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-2">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[24px]" data-icon="menu_book">menu_book</span>
+            <h2 class="font-headline-lg text-headline-lg text-on-surface">Water Safety &amp; Community Guides</h2>
+          </div>
+          <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+            Civic empowerment tools and emergency readiness protocols published by the Municipal Water Board.
+          </p>
+        </div>
+        <button class="trigger-quiz-modal font-label-sm text-label-sm text-primary hover:text-primary-container font-semibold flex items-center gap-1">
+          Explore Complete Knowledge Base
+          <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+        </button>
+      </div>
+
+      <!-- 3-Column Card Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Card 1: DIY Home Water Testing -->
+        <div class="glass-panel-l1 rounded-2xl p-6 border-t-4 border-t-primary-container flex flex-col justify-between hover:border-primary-container transition-all group">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-xl bg-primary-container/15 text-primary-container flex items-center justify-center border border-primary-container/30 group-hover:scale-105 transition-transform">
+              <span class="material-symbols-outlined text-[28px]" data-icon="science">science</span>
+            </div>
+            <div>
+              <span class="font-label-sm text-label-sm text-primary-container font-semibold uppercase tracking-wider">Free Kit Program</span>
+              <h3 class="font-headline-md text-headline-md text-on-surface mt-1 group-hover:text-primary transition-colors">DIY Home Water Testing</h3>
+            </div>
+            <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Step-by-step guidance on collecting tap specimens using municipal colorimetric test strips. Free test packets are delivered straight to your door or civic centers.
+            </p>
+          </div>
+          <div class="pt-6 border-t border-outline-variant/20 mt-4">
+            <button class="trigger-kit-modal font-headline-sm text-body-md text-primary font-bold flex items-center gap-1 group-hover:gap-2 transition-all">
+              Request Free Testing Kit <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 2: Boil Water Notice Protocol -->
+        <div class="glass-panel-l1 rounded-2xl p-6 border-t-4 border-t-[#f59e0b] flex flex-col justify-between hover:border-[#f59e0b] transition-all group">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-xl bg-[#f59e0b]/15 text-[#f59e0b] flex items-center justify-center border border-[#f59e0b]/30 group-hover:scale-105 transition-transform">
+              <span class="material-symbols-outlined text-[28px]" data-icon="local_fire_department">local_fire_department</span>
+            </div>
+            <div>
+              <span class="font-label-sm text-label-sm text-[#fcd34d] font-semibold uppercase tracking-wider">Emergency Guide &amp; Timer</span>
+              <h3 class="font-headline-md text-headline-md text-on-surface mt-1 group-hover:text-[#fcd34d] transition-colors">Boil Water Notice Protocol</h3>
+            </div>
+            <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Essential procedures during severe storm events or main pressure drops. Learn correct rolling-boil runtimes (minimum 60 seconds) with our interactive timer.
+            </p>
+          </div>
+          <div class="pt-6 border-t border-outline-variant/20 mt-4">
+            <button class="trigger-boil-modal font-headline-sm text-body-md text-[#fcd34d] font-bold flex items-center gap-1 group-hover:gap-2 transition-all">
+              Launch Boiling Timer &amp; Checklist <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 3: Tap Safety Assessment Quiz -->
+        <div class="glass-panel-l1 rounded-2xl p-6 border-t-4 border-t-[#22c55e] flex flex-col justify-between hover:border-[#22c55e] transition-all group" id="safety-quiz">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-xl bg-[#22c55e]/15 text-[#22c55e] flex items-center justify-center border border-[#22c55e]/30 group-hover:scale-105 transition-transform">
+              <span class="material-symbols-outlined text-[28px]" data-icon="verified_user">verified_user</span>
+            </div>
+            <div>
+              <span class="font-label-sm text-label-sm text-[#4ade80] font-semibold uppercase tracking-wider">Interactive Diagnostic</span>
+              <h3 class="font-headline-md text-headline-md text-on-surface mt-1 group-hover:text-[#4ade80] transition-colors">Tap Safety Assessment Quiz</h3>
+            </div>
+            <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Take a 2-minute diagnostic assessment based on your home construction year, pipe composition, and neighborhood municipal trunk line to gauge risk levels.
+            </p>
+          </div>
+          <div class="pt-6 border-t border-outline-variant/20 mt-4">
+            <button class="trigger-quiz-modal font-headline-sm text-body-md text-[#4ade80] font-bold flex items-center gap-1 group-hover:gap-2 transition-all">
+              Launch Diagnostic Tool <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 8. Global Civic Municipal Footer -->
+  <footer class="w-full bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/20 mt-16">
+    <div class="w-full px-space-md lg:px-space-xl py-space-lg flex flex-col md:flex-row justify-between items-center gap-space-md max-w-7xl mx-auto">
+      <!-- Brand & Mission Statement -->
+      <div class="flex flex-col items-center md:items-start gap-1">
+        <div class="flex items-center gap-2">
+          <div class="w-6 h-6 rounded bg-primary-container/10 border border-primary-container/40 p-0.5 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="w-full h-full" fill="none">
+              <path d="M24 6C24 6 10 22 10 31C10 38.732 16.268 45 24 45C31.732 45 38 38.732 38 31C38 22 24 6 24 6Z" fill="#38bdf8"/>
+            </svg>
+          </div>
+          <span class="font-headline-sm text-headline-sm font-bold text-primary dark:text-primary">AquaWatch</span>
+        </div>
+        <p class="font-body-sm text-body-sm text-on-surface-variant text-center md:text-left max-w-md">
+          © 2026 AquaWatch Municipal Water Authority. Telemetry data governed under Civic Open Sensor Protocol 4.2.
+        </p>
+      </div>
+
+      <!-- Footer Mandatory Navigation Links -->
+      <div class="flex flex-wrap items-center justify-center gap-4 text-center">
+        <a class="text-primary dark:text-primary font-medium hover:text-tertiary hover:underline transition-colors duration-150 text-label-sm font-label-sm flex items-center gap-1" href="tel:18005559283">
+          <span class="material-symbols-outlined text-[14px]" data-icon="call">call</span>
+          Emergency Hotline: 1-800-555-WATER
+        </a>
+        <span class="text-outline-variant/40 hidden sm:inline">|</span>
+        <button id="footer-export-btn" class="text-on-surface-variant hover:text-tertiary hover:underline transition-colors duration-150 text-label-sm font-label-sm" onclick="document.getElementById('export-telemetry-btn').click()">
+          EPA Compliance Ledger (CSV)
+        </button>
+        <span class="text-outline-variant/40 hidden sm:inline">|</span>
+        <button class="trigger-report-modal text-on-surface-variant hover:text-tertiary hover:underline transition-colors duration-150 text-label-sm font-label-sm">
+          Citizen Dispatch Portal
+        </button>
+        <span class="text-outline-variant/40 hidden sm:inline">|</span>
+        <button class="trigger-boil-modal text-on-surface-variant hover:text-tertiary hover:underline transition-colors duration-150 text-label-sm font-label-sm">
+          Boil Water Protocols
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODALS & INTERACTIVE DRAWERS ==================== -->
+
+  <!-- Modal 1: Report Contamination Issue -->
+  <div id="report-issue-modal" class="modal-container hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div class="modal-overlay fixed inset-0 bg-black/70 backdrop-blur-sm close-modal-btn"></div>
+    <div class="modal-content relative w-full max-w-xl glass-panel-l2 rounded-2xl p-6 border border-primary/40 shadow-2xl z-10 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between pb-4 border-b border-outline-variant/30 mb-4">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary text-[24px]">report_problem</span>
+          <h3 class="font-headline-md text-headline-md text-on-surface font-bold">Report Water Issue</h3>
+        </div>
+        <button class="close-modal-btn p-1.5 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container-high/50 transition-colors">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <form id="report-contamination-form" class="space-y-4">
+        <div>
+          <label class="block font-label-sm text-outline mb-1 text-xs">Issue Category</label>
+          <select id="report-category" class="w-full bg-surface-container rounded-lg border border-outline-variant/40 text-on-surface text-body-md p-2.5 focus:border-primary focus:ring-1 focus:ring-primary">
+            <option value="discoloration">Tap Discoloration (Brown, Yellow, Milky)</option>
+            <option value="odor">Unusual Odor (Sulfur, Chlorine, Metallic)</option>
+            <option value="pressure">Pressure Drop or Line Interruption</option>
+            <option value="sheen">Surface Chemical Sheen / Film</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-label-sm text-outline mb-1 text-xs">Short Description / Title</label>
+          <input type="text" id="report-title" required placeholder="e.g., Murky reddish water from kitchen sink" class="w-full bg-surface-container rounded-lg border border-outline-variant/40 text-on-surface text-body-md p-2.5 focus:border-primary focus:ring-1 focus:ring-primary">
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-1">
+            <label class="font-label-sm text-outline text-xs">Incident Location</label>
+            <button type="button" id="gps-autofill-btn" class="font-label-sm text-[11px] text-primary flex items-center gap-1 hover:underline">
+              <span class="material-symbols-outlined text-[13px]">my_location</span> Use Current GPS
+            </button>
+          </div>
+          <input type="text" id="report-location" placeholder="e.g. 1420 River Road, Apt 3B or Basin #02" class="w-full bg-surface-container rounded-lg border border-outline-variant/40 text-on-surface text-body-md p-2.5 focus:border-primary focus:ring-1 focus:ring-primary">
+        </div>
+
+        <div>
+          <label class="block font-label-sm text-outline mb-1 text-xs">Detailed Observations</label>
+          <textarea id="report-desc" rows="3" placeholder="Provide details: did you notice sediment, sudden temperature fluctuation, or pipe noise?" class="w-full bg-surface-container rounded-lg border border-outline-variant/40 text-on-surface text-body-md p-2.5 focus:border-primary focus:ring-1 focus:ring-primary"></textarea>
+        </div>
+
+        <div class="p-3 bg-surface-container/50 rounded-lg border border-outline-variant/20 flex items-center justify-between text-body-sm">
+          <div class="flex items-center gap-2 text-outline">
+            <span class="material-symbols-outlined text-[20px]">add_a_photo</span>
+            <span>Attach photo of tap water (Optional)</span>
+          </div>
+          <label class="cursor-pointer px-3 py-1 bg-surface-container-high text-primary rounded border border-primary/30 text-xs font-semibold hover:bg-primary/10 transition-colors">
+            Browse
+            <input type="file" accept="image/*" class="hidden" onchange="showToast('Sample image attached for telemetry review')">
+          </label>
+        </div>
+
+        <div class="pt-2 flex justify-end gap-3">
+          <button type="button" class="close-modal-btn px-4 py-2 rounded-lg text-outline hover:text-on-surface font-label-sm text-body-sm">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded-lg bg-gradient-to-r from-[#0284c7] to-[#06b6d4] text-surface-container-lowest font-headline-sm text-body-md font-bold cyan-halo hover:brightness-110 transition-all">
+            Transmit Report
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 2: Boil Water Protocol & Interactive Timer -->
+  <div id="boil-notice-modal" class="modal-container hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div class="modal-overlay fixed inset-0 bg-black/70 backdrop-blur-sm close-modal-btn"></div>
+    <div class="modal-content relative w-full max-w-lg glass-panel-l2 rounded-2xl p-6 border border-[#f59e0b]/40 shadow-2xl z-10 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between pb-3 border-b border-outline-variant/30 mb-4">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[#f59e0b] text-[24px]">local_fire_department</span>
+          <h3 class="font-headline-md text-headline-md text-on-surface font-bold">Boil Water Safety Guide</h3>
+        </div>
+        <button class="close-modal-btn p-1.5 rounded-lg text-outline hover:text-on-surface">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <!-- Interactive 60-Second Timer -->
+      <div class="bg-surface-container/60 rounded-xl p-4 border border-[#f59e0b]/30 flex flex-col items-center justify-center text-center mb-5">
+        <span class="font-label-sm text-[11px] text-[#fcd34d] font-semibold uppercase tracking-wider mb-2">Rolling Boil Timer</span>
+        
+        <div class="relative w-32 h-32 flex items-center justify-center my-2">
+          <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" fill="transparent" r="45" stroke="rgba(44, 52, 76, 0.6)" stroke-width="6"></circle>
+            <circle id="boil-circle-progress" class="timer-circle-progress" cx="50" cy="50" fill="transparent" r="45" stroke="#f59e0b" stroke-dasharray="282.74" stroke-dashoffset="0" stroke-linecap="round" stroke-width="6"></circle>
+          </svg>
+          <div class="absolute flex flex-col items-center">
+            <span id="boil-timer-text" class="font-headline-lg text-3xl font-bold text-[#fef3c7]">01:00</span>
+            <span class="font-label-sm text-[9px] text-outline uppercase">CDC Minimum</span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 mt-2">
+          <button id="boil-timer-start-btn" class="px-4 py-1.5 rounded-lg bg-[#f59e0b] text-surface-container-lowest font-headline-sm font-bold text-xs flex items-center gap-1 hover:brightness-110 transition-all">
+            <span class="material-symbols-outlined text-[16px]">play_arrow</span> Start 60s Timer
+          </button>
+          <button id="boil-timer-reset-btn" class="px-3 py-1.5 rounded-lg bg-surface-container-high text-outline hover:text-on-surface font-label-sm text-xs">
+            Reset
+          </button>
+        </div>
+      </div>
+
+      <!-- Emergency Step-by-Step Checklist -->
+      <div class="space-y-3 text-body-sm">
+        <h4 class="font-headline-sm text-sm font-bold text-on-surface">Standard Precautionary Rules:</h4>
+        <div class="space-y-2">
+          <label class="flex items-start gap-2.5 p-2 rounded-lg bg-surface-container/40 border border-outline-variant/20 cursor-pointer">
+            <input type="checkbox" checked class="rounded border-outline-variant text-primary focus:ring-0 mt-0.5">
+            <span class="text-on-surface-variant">Bring water to a vigorous rolling boil for at least <strong>1 full minute</strong> (3 minutes at elevations &gt; 6,500 ft).</span>
+          </label>
+          <label class="flex items-start gap-2.5 p-2 rounded-lg bg-surface-container/40 border border-outline-variant/20 cursor-pointer">
+            <input type="checkbox" class="rounded border-outline-variant text-primary focus:ring-0 mt-0.5">
+            <span class="text-on-surface-variant">Use cooled boiled water for drinking, cooking, brushing teeth, making ice, and baby formula.</span>
+          </label>
+          <label class="flex items-start gap-2.5 p-2 rounded-lg bg-surface-container/40 border border-outline-variant/20 cursor-pointer">
+            <input type="checkbox" class="rounded border-outline-variant text-primary focus:ring-0 mt-0.5">
+            <span class="text-on-surface-variant">Standard refrigerator filters do <strong>NOT</strong> kill bacterial microbes or protozoa.</span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Free DIY Testing Kit Request -->
+  <div id="testing-kit-modal" class="modal-container hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div class="modal-overlay fixed inset-0 bg-black/70 backdrop-blur-sm close-modal-btn"></div>
+    <div class="modal-content relative w-full max-w-md glass-panel-l2 rounded-2xl p-6 border border-primary/40 shadow-2xl z-10">
+      <div class="flex items-center justify-between pb-3 border-b border-outline-variant/30 mb-4">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary text-[24px]">science</span>
+          <h3 class="font-headline-md text-headline-md text-on-surface font-bold">Request Home Testing Kit</h3>
+        </div>
+        <button class="close-modal-btn p-1.5 rounded-lg text-outline hover:text-on-surface">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <form id="kit-request-form" class="space-y-4">
+        <p class="font-body-sm text-on-surface-variant">
+          Municipal colorimetric strip kits test for Lead, Copper, Total Dissolved Solids, Chlorine, and pH. Shipped free to municipal residents.
+        </p>
+
+        <div>
+          <label class="block font-label-sm text-outline mb-1 text-xs">Resident Name</label>
+          <input type="text" required placeholder="Full Name" class="w-full bg-surface-container rounded-lg border border-outline-variant/40 text-on-surface text-body-md p-2.5 focus:border-primary focus:ring-1 focus:ring-primary">
+        </div>
+
+        <div>
+          <label class="block font-label-sm text-outline mb-1 text-xs">Delivery Mailing Address</label>
+          <input type="text" required placeholder="Street, Apt, Zip Code" class="w-full bg-surface-container rounded-lg border border-outline-variant/40 text-on-surface text-body-md p-2.5 focus:border-primary focus:ring-1 focus:ring-primary">
+        </div>
+
+        <div>
+          <label class="block font-label-sm text-outline mb-1 text-xs">Select Kit Specialty</label>
+          <select class="w-full bg-surface-container rounded-lg border border-outline-variant/40 text-on-surface text-body-md p-2.5 focus:border-primary focus:ring-1 focus:ring-primary">
+            <option>Comprehensive 6-in-1 Test Strips (Recommended)</option>
+            <option>Heavy Metals Focus (Lead, Copper, Iron)</option>
+            <option>Biological Pathogen &amp; Coliform Culture Test</option>
+          </select>
+        </div>
+
+        <div class="pt-2 flex justify-end gap-3">
+          <button type="button" class="close-modal-btn px-4 py-2 rounded-lg text-outline hover:text-on-surface text-body-sm">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded-lg bg-gradient-to-r from-[#0284c7] to-[#06b6d4] text-surface-container-lowest font-headline-sm text-body-md font-bold cyan-halo hover:brightness-110 transition-all">
+            Submit Order
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 4: Tap Safety Assessment Diagnostic Quiz -->
+  <div id="safety-quiz-modal" class="modal-container hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div class="modal-overlay fixed inset-0 bg-black/70 backdrop-blur-sm close-modal-btn"></div>
+    <div class="modal-content relative w-full max-w-lg glass-panel-l2 rounded-2xl p-6 border border-[#22c55e]/40 shadow-2xl z-10 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between pb-3 border-b border-outline-variant/30 mb-4">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[#22c55e] text-[24px]">verified_user</span>
+          <h3 class="font-headline-md text-headline-md text-on-surface font-bold">Tap Safety Risk Assessment</h3>
+        </div>
+        <button class="close-modal-btn p-1.5 rounded-lg text-outline hover:text-on-surface">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <!-- Quiz Form -->
+      <form id="diagnostic-quiz-form" class="space-y-4">
+        <p class="font-body-sm text-on-surface-variant">Answer 4 quick questions to receive a diagnostic rating of your home's water risk factors.</p>
+
+        <div>
+          <label class="block font-headline-sm text-sm font-semibold text-on-surface mb-1.5">1. What year was your residential building constructed?</label>
+          <div class="space-y-1.5 text-body-sm">
+            <label class="flex items-center gap-2 p-2 rounded-lg bg-surface-container/50 border border-outline-variant/20 hover:border-primary cursor-pointer">
+              <input type="radio" name="quiz-year" value="pre1986" class="text-primary focus:ring-0">
+              <span>Before 1986 (Higher likelihood of lead solder pipes)</span>
+            </label>
+            <label class="flex items-center gap-2 p-2 rounded-lg bg-surface-container/50 border border-outline-variant/20 hover:border-primary cursor-pointer">
+              <input type="radio" name="quiz-year" value="1990" checked class="text-primary focus:ring-0">
+              <span>1986 - 2010 (Copper or PVC transition era)</span>
+            </label>
+            <label class="flex items-center gap-2 p-2 rounded-lg bg-surface-container/50 border border-outline-variant/20 hover:border-primary cursor-pointer">
+              <input type="radio" name="quiz-year" value="post2010" class="text-primary focus:ring-0">
+              <span>After 2010 (Modern lead-free certification)</span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-headline-sm text-sm font-semibold text-on-surface mb-1.5">2. What are your main interior plumbing pipes made of?</label>
+          <div class="space-y-1.5 text-body-sm">
+            <label class="flex items-center gap-2 p-2 rounded-lg bg-surface-container/50 border border-outline-variant/20 hover:border-primary cursor-pointer">
+              <input type="radio" name="quiz-pipe" value="copper" checked class="text-primary focus:ring-0">
+              <span>Copper or PEX (Plastic)</span>
+            </label>
+            <label class="flex items-center gap-2 p-2 rounded-lg bg-surface-container/50 border border-outline-variant/20 hover:border-primary cursor-pointer">
+              <input type="radio" name="quiz-pipe" value="galvanized" class="text-primary focus:ring-0">
+              <span>Galvanized Iron (Dull grey, magnetic)</span>
+            </label>
+            <label class="flex items-center gap-2 p-2 rounded-lg bg-surface-container/50 border border-outline-variant/20 hover:border-primary cursor-pointer">
+              <input type="radio" name="quiz-pipe" value="lead" class="text-primary focus:ring-0">
+              <span>Lead pipe or Not Sure</span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-headline-sm text-sm font-semibold text-on-surface mb-1.5">3. Have you noticed any sensory issues in the last 14 days?</label>
+          <div class="space-y-1.5 text-body-sm">
+            <label class="flex items-center gap-2 p-2 rounded-lg bg-surface-container/50 border border-outline-variant/20 hover:border-primary cursor-pointer">
+              <input type="radio" name="quiz-issue" value="none" checked class="text-primary focus:ring-0">
+              <span>None, water is crystal clear and odorless</span>
+            </label>
+            <label class="flex items-center gap-2 p-2 rounded-lg bg-surface-container/50 border border-outline-variant/20 hover:border-primary cursor-pointer">
+              <input type="radio" name="quiz-issue" value="sensory" class="text-primary focus:ring-0">
+              <span>Occasional cloudiness, rust tint, or metallic taste</span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-headline-sm text-sm font-semibold text-on-surface mb-1.5">4. Do you use an in-home water filtration device?</label>
+          <div class="space-y-1.5 text-body-sm">
+            <label class="flex items-center gap-2 p-2 rounded-lg bg-surface-container/50 border border-outline-variant/20 hover:border-primary cursor-pointer">
+              <input type="radio" name="quiz-filter" value="yes" checked class="text-primary focus:ring-0">
+              <span>Yes (Pitcher, faucet filter, or Reverse Osmosis)</span>
+            </label>
+            <label class="flex items-center gap-2 p-2 rounded-lg bg-surface-container/50 border border-outline-variant/20 hover:border-primary cursor-pointer">
+              <input type="radio" name="quiz-filter" value="no" class="text-primary focus:ring-0">
+              <span>No, direct tap water only</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="pt-3 flex justify-end gap-3">
+          <button type="button" class="close-modal-btn px-4 py-2 rounded-lg text-outline hover:text-on-surface text-body-sm">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded-lg bg-gradient-to-r from-[#0284c7] to-[#06b6d4] text-surface-container-lowest font-headline-sm text-body-md font-bold cyan-halo hover:brightness-110 transition-all">
+            Calculate Risk
+          </button>
+        </div>
+      </form>
+
+      <!-- Quiz Result Container (Hidden until computed) -->
+      <div id="quiz-result-box" class="hidden space-y-4">
+        <div class="p-4 rounded-xl bg-surface-container/70 border border-outline-variant/30 text-center">
+          <div class="font-label-sm text-xs text-outline uppercase tracking-wider mb-1">Diagnostic Score</div>
+          <div id="quiz-risk-score" class="font-headline-lg text-2xl font-bold mb-2">Calculating...</div>
+          <p id="quiz-risk-summary" class="font-body-md text-on-surface-variant leading-relaxed"></p>
+        </div>
+
+        <div class="space-y-2">
+          <div class="font-headline-sm text-sm font-semibold text-on-surface">Recommended Actions:</div>
+          <ul id="quiz-risk-actions" class="space-y-2 font-body-sm text-on-surface-variant"></ul>
+        </div>
+
+        <div class="pt-3 flex justify-between gap-3">
+          <button type="button" id="retake-quiz-btn" class="px-4 py-2 rounded-lg bg-surface-container-high text-outline hover:text-on-surface text-body-sm">
+            Retake Quiz
+          </button>
+          <button type="button" class="trigger-kit-modal px-5 py-2 rounded-lg bg-primary-container text-surface-container-lowest font-headline-sm text-body-md font-bold">
+            Order Testing Strips
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 5: Incident Thread / Comments Modal -->
+  <div id="incident-thread-modal" class="modal-container hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div class="modal-overlay fixed inset-0 bg-black/70 backdrop-blur-sm close-modal-btn"></div>
+    <div class="modal-content relative w-full max-w-xl glass-panel-l2 rounded-2xl p-6 border border-primary/40 shadow-2xl z-10 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between pb-3 border-b border-outline-variant/30 mb-4">
+        <div>
+          <span id="thread-modal-status" class="font-label-sm text-label-sm px-2.5 py-0.5 rounded border font-medium">Status</span>
+          <h3 id="thread-modal-title" class="font-headline-md text-headline-md text-on-surface font-bold mt-1">Incident Thread</h3>
+        </div>
+        <button class="close-modal-btn p-1.5 rounded-lg text-outline hover:text-on-surface">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <div id="thread-modal-details" class="mb-4"></div>
+
+      <div class="border-t border-outline-variant/20 pt-4">
+        <h4 class="font-headline-sm text-sm font-semibold text-on-surface mb-3 flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-primary text-[18px]">forum</span> Civic &amp; Utility Log
+        </h4>
+        <div id="thread-modal-comments" class="space-y-2.5 max-h-48 overflow-y-auto mb-3"></div>
+
+        <div class="flex gap-2 mt-3">
+          <input type="text" id="thread-new-comment-input" placeholder="Add field observation or neighbor update..." class="flex-1 bg-surface-container rounded-lg border border-outline-variant/40 text-on-surface text-body-md p-2.5 focus:border-primary focus:ring-1 focus:ring-primary">
+          <button id="thread-submit-comment-btn" class="px-4 py-2 rounded-lg bg-primary text-surface-container-lowest font-headline-sm font-bold text-body-sm hover:brightness-110 transition-all">
+            Post
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container (Bottom-Right) -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none max-w-sm"></div>
+
+  <!-- Application Logic -->
+  <script src="js/app.js"></script>
+</body>
+</html>
